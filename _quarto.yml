@@ -1,0 +1,20 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "สื่อในยุคดิจิทัล และทักษะการจัดการเรียนรู้ของครูยุคใหม่"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+
+format:
+  html:
+    theme:
+      - default
+    css: styles.css
+    toc: true
+
+
+

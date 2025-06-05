@@ -1,0 +1,191 @@
+---
+title: "พร้อมแค่ไหน? ก่อนลุยเทอมใหม่กับ AI และพลังนิสิต"
+sidebar: false
+format:
+  html:
+    include-in-header: 
+      - text: |
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+---
+<style>
+            body {
+              font-family: 'Sarabun', sans-serif;
+              font-size: 1.5em
+            }
+
+            h1 {
+              font-family: 'Sarabun', sans-serif;
+            }
+          </style>
+<style>
+  .progress-fixed-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 1050; /* ให้ลอยอยู่เหนือทุกอย่าง */
+  }
+  body {
+    padding-top: 20px; /* เผื่อพื้นที่ progress bar ด้านบน (ปรับตามความสูง progress bar) */
+  }
+</style>
+
+<div class="progress progress-fixed-top" style="height: 20px;">
+  <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%; font-weight:bold;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+    0%
+  </div>
+</div>
+
+  <form id="myForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScJOkAGcdzyHfwDVEVNPLyqWUaOm4YGIdL20y2YFa64s2orXg/formResponse" method="post" target="hidden_iframe">
+
+1. มหาวิทยาลัยที่นิสิตศึกษาอยู่ 
+ <input
+    style="flex:0 2 70px; min-width:0; max-width:250px; width:250px; display:inline-block;"
+    class="form-control"
+    name="entry.1220834137"
+    type="text"
+    required>
+
+---
+
+2. วิชาเอก/สาขาวิชา
+<input
+    style="flex:0 2 70px; min-width:0; max-width:250px; width:250px; display:inline-block;"
+    class="form-control"
+    name="entry.325677763"
+    type="text"
+    required>
+
+---
+
+3. นิสิตจะนำ AI ไปใช้ในการช่วยจัดการเรียนรู้หรือไม่ <select style="flex:1; min-width:0; display:inline-block; width:auto;" class="form-select" name="entry.1129837359"
+  required>
+    <option value="" disabled selected>เลือก</option>
+    <option value="นำไปใช้">นำไปใช้</option>
+    <option value="ไม่นำไปใช้">ไม่นำไปใช้</option>
+  </select>
+
+---
+
+4. ถ้าข้อที่ 3. ตอบว่าไม่นำไปใช้ ให้ระบุเหตุผล แต่ถ้าข้อ 3. ตอบว่านำไปใช้ จะนำไปใช้อย่างไร
+
+<textarea
+    style="flex:0 2 150px; min-width:0; max-width:450px; width:450px; height:100px; display:inline-block;"
+    class="form-control"
+    name="entry.295285554"
+    required></textarea>
+
+---
+
+5. ให้นิสิตให้คะแนนความพร้อมสำหรับการเปิดเทอมของตนเอง
+
+-   1 หมายถึง ยังไม่พร้อมเลย! เหมือนแบตหมด ต้องชาร์จด่วน!
+
+-   2 หมายถึง เริ่มมีไฟบ้าง แต่ยังต้องเติมพลังอีกเยอะ
+
+-   3 หมายถึง พร้อมแล้ว พอได้อยู่ แต่ยังต้องฝึกอีกนิดให้มั่นใจ
+
+-   4 หมายถึง พร้อมแล้วนะ! แค่รอเวลาปลดปล่อยพลังเต็มที่
+
+-   5 หมายถึง พร้อมเต็มร้อย! พร้อมลุย สู้ตาย ไม่มีถอย!
+
+<label for="points">คะแนนที่ให้ตนเอง คือ</label>
+<input type="range" id="points" name="entry.1381110249" min="1" max="5" step="1" value="5" oninput="document.getElementById('points-value').innerText = this.value">
+<span id="points-value"> 5 </span> คะแนน
+
+---
+
+<button class="btn btn-primary" type="submit">ส่งคำตอบ</button>
+
+
+</form>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+<div id="submit-message" style="display:none; color:blue; font-weight:bold; margin-top:1em;">
+  เราได้บันทึกข้อความของคุณไว้แล้ว
+  
+</div>
+
+
+<script>
+  // เมื่อฟอร์มถูก submit
+  document.getElementById('myForm').onsubmit = function() {
+    // ซ่อนฟอร์ม
+    document.getElementById('myForm').style.display = 'none';
+    // แสดงข้อความ
+    document.getElementById('submit-message').style.display = 'block';
+    // ยังให้ฟอร์มส่งข้อมูลไป Google Form ตามปกติ
+    return true;
+  };
+</script>
+
+
+<!--
+
+<script>
+  // กำหนดเวลาปิดรับ (เช่น 2025-05-29 17:00:00 +07:00)
+  const closeTime = new Date("2025-05-28T13:00:00+07:00");
+
+  document.getElementById('myForm').onsubmit = function(e) {
+    const now = new Date();
+    if (now > closeTime) {
+      // ถ้าเลยเวลาปิดรับ
+      e.preventDefault(); // ไม่ให้ส่งฟอร์ม
+      document.getElementById('myForm').style.display = 'none';
+      document.getElementById('submit-message').style.display = 'block';
+      document.getElementById('submit-message').innerHTML = "ขออภัย ฟอร์มนี้ปิดรับคำตอบแล้ว";
+      return false;
+    } else {
+      // ยังไม่หมดเวลา ส่งฟอร์มตามปกติ
+      document.getElementById('myForm').style.display = 'none';
+      document.getElementById('submit-message').style.display = 'block';
+      // ข้อความที่แสดงหลังส่งฟอร์ม
+      document.getElementById('submit-message').innerHTML = "เราได้บันทึกข้อความของคุณไว้แล้ว<br>นักเรียนสามารถกดที่ tab scrolling telling เพื่อส่งคำตอบเพิ่มเติมได้";
+      return true;
+    }
+  };
+</script>
+
+-->
+
+<script>
+  // ระบุ id ของฟอร์ม
+  const form = document.getElementById('myForm');
+  // เลือก input และ select ทั้งหมดในฟอร์ม (ที่ต้องกรอก)
+  const requiredFields = form.querySelectorAll('input[required], select[required]');
+  const progressBar = document.getElementById('progress-bar');
+
+  function updateProgressBar() {
+    let filled = 0;
+    requiredFields.forEach(field => {
+      // สำหรับ select ให้เช็คว่า value ไม่ใช่ค่าว่าง
+      if (
+        (field.tagName === "SELECT" && field.value !== "" && field.value !== null) ||
+        (field.tagName === "INPUT" && field.value.trim() !== "")
+      ) {
+        filled += 1;
+      }
+    });
+    const percent = Math.round((filled / requiredFields.length) * 100);
+    progressBar.style.width = percent + "%";
+    progressBar.setAttribute('aria-valuenow', percent);
+    progressBar.textContent = percent + "%";
+    // เพิ่มสีเมื่อครบ 100%
+    if(percent === 100){
+      progressBar.classList.add("bg-success");
+    } else {
+      progressBar.classList.remove("bg-success");
+    }
+  }
+
+  // อัปเดต progress ทุกครั้งที่กรอกข้อมูล
+  requiredFields.forEach(field => {
+    field.addEventListener('input', updateProgressBar);
+    field.addEventListener('change', updateProgressBar);
+  });
+
+  // เรียกครั้งแรกเมื่อโหลดหน้า
+  updateProgressBar();
+</script>
+
+
